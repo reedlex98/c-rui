@@ -4,14 +4,9 @@
 //     Ex: menor multiplo de 13 maior que 100. Resultado: 104.
 #include <stdio.h>
 int main(){
-    int number, limit, multiple, count=1;
+    int number, limit;
     printf("Insira o numero e o valor limit: \n");
     scanf("%d %d", &number, &limit);
-    do
-    {
-        multiple = number * count;
-        count = count + 1;
-    } while (multiple <= limit);
-    printf("Menor multiplo de %d maior que %d. Resultado: %d\n", number, limit, multiple);
-    
+    printf("Menor multiplo de %d maior que %d. Resultado: %d\n", number, limit, number * (limit/number + 1));
+ 
 }
