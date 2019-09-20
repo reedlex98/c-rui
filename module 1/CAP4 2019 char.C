@@ -1,4 +1,4 @@
-#define ex1
+#define ex10
 #include "stdio.h"
 
 /******************************************************************************
@@ -9,7 +9,7 @@
 1. Vetor de serie de caracteres ou strings
 
 Um vetor de string e' uma variavel do tipo "char" que armazena mais de um
-caracter ou seja um serie de caracteres. Assim, um vetor de string e´uma serie
+caracter ou seja um serie de caracteres. Assim, um vetor de string eï¿½uma serie
 de caracteres, onde cada um deste caracteres ocupa um byte na memoria, um do
 lado do outro em sequencia, e o ultimo byte e'sempre o finalizador "\0".
 
@@ -19,7 +19,7 @@ como uma string acessando todos os caracteres ate' encontrar o finalizador"\0",
 
 2. Inicializando um vetor ou matriz de strings ou serie de caracteres
 
-Lembrando que, um vetor so´pode ser inicializado se for declarado como uma
+Lembrando que, um vetor soï¿½pode ser inicializado se for declarado como uma
 variavel global ou static local. Para um vetor de string a regra continua
 valendo.
 
@@ -36,8 +36,8 @@ Exemplo:
 
     char nome [] = {'F','A','T','E','C','\0'}; com finalizador
 
-B - Inicializando como string. Neste caso o finalizador e´colocado
-automaticamente. Lembrando ainda que o finalizador tambem e´um caracter,
+B - Inicializando como string. Neste caso o finalizador eï¿½colocado
+automaticamente. Lembrando ainda que o finalizador tambem eï¿½um caracter,
 portanto ocupa uma posicao no vetor.
 
 Exemplo:
@@ -53,7 +53,7 @@ verificar como elas funcionam usando uma string.
 
 3 - printf() -> escreve caracteres formatados na saida padrao.(no caso video)
 
-A forma geral da funcao printf() e´:
+A forma geral da funcao printf() eï¿½:
 	printf("<serie de controle>", lista de argumentos);
 
 O codigo de formatacao para uma serie de caracteres ou string e' "%s"
@@ -204,7 +204,7 @@ printf("%50s\n",str);		/* alinhado pela direita c/ tam = 50 */
 /*
 4 - scanf() -> le caracteres formatados da entrada padrao. (no caso teclado)
 
-A forma geral da funcao scanf() e´:
+A forma geral da funcao scanf() eï¿½:
 	scanf("<serie de controle>", lista de argumentos);
 
 O codigo de formatacao para uma serie de caracteres ou string e' "%s".
@@ -254,7 +254,7 @@ printf("a string digitada e': %s",c);
 /*
 6 - puts() -> escreve uma serie de caracteres na saida padrao.(no caso video)
 
-A forma geral da funcao puts() e´: puts(variavel);
+A forma geral da funcao puts() eï¿½: puts(variavel);
 
 Exemplo:*/
 #ifdef ex9
@@ -275,11 +275,11 @@ puts(c);
 7. Um vetor de strings
 
 Anteriormente nos estudamos vetores numericos com mais de uma dimensao. Uma
-string e´um vetor unidimensional. Portanto, se juntarmos varios vetores de
+string eï¿½um vetor unidimensional. Portanto, se juntarmos varios vetores de
 strings teremos um vetor bidimensional.
 
-A forma geral de uma vetor de strings e´:
-          char <nome_da_variável> [num_de_strings][compr_das_strings];
+A forma geral de uma vetor de strings eï¿½:
+          char <nome_da_variï¿½vel> [num_de_strings][compr_das_strings];
 
 Exemplo:
 char semana [7] [14];  vetor bidimensional do tipo "char" de nome "semana" com
@@ -300,10 +300,10 @@ diferenca esta' na forma de interpreta'-las. O 1. exemplo usa caracteres e o
 8 - Acessando uma string ou linha no vetor de strings
 
 Para acessar uma string ou linha no vetor de strings usa-se apenas o primeiro
-índice do vetor que indica o "numero da string" ou "linha".
+ï¿½ndice do vetor que indica o "numero da string" ou "linha".
 
-A forma geral para acessar uma string no vetor de strings e´:
-             <nome_da_variável> [num_da_strings ou linha];
+A forma geral para acessar uma string no vetor de strings eï¿½:
+             <nome_da_variï¿½vel> [num_da_strings ou linha];
 
 Exemplo:
 semana [2]; acessa a 3. linha (string) do vetor "semana"
@@ -330,7 +330,7 @@ tabela [0] [2]; acessa a 1. linha e a 3. coluna
 
 9. Inicializacao de um vetor de strings
 
-Um vetor de strings e´um vetor bidimensional. Assim, para inicializa-lo
+Um vetor de strings eï¿½um vetor bidimensional. Assim, para inicializa-lo
 coloca-se o operador atribuicao "=", o abre chave ({), as strings entre aspas
 ("),  separadas por virgula "," e o fecha chave (}).
 
@@ -395,7 +395,7 @@ printf("%c",semana [6][5]);
 *****************************************************************************
 OBS.: Todos os programa devem ser finalizados pelo usuario.
 
-1 - Escreva um programa para receber 5 nomes, com até 7 caracteres, via teclado
+1 - Escreva um programa para receber 5 nomes, com atï¿½ 7 caracteres, via teclado
     e imprima-os no video no seguinte formato:
 
             10        20        30        40        50
@@ -413,7 +413,7 @@ OBS.: Todos os programa devem ser finalizados pelo usuario.
         string1             string2             string3
 
 3 - Receba 2 string de ate 10 caracteres via teclado, compare-as mostrando como
-    resultado se são IGUAIS ou DIFERENTES.
+    resultado se sï¿½o IGUAIS ou DIFERENTES.
 
 4 - Leia uma string (3 caracteres) via teclado que pode assumir os valores seg, 
     ter, qua, qui, sex, sab, dom, e imprima as seguintes mensagens, respectivamente:
