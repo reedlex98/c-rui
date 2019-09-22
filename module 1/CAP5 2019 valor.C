@@ -1,4 +1,4 @@
-#define ex1
+#define ex7
 #include "stdio.h"
 /******************************************************************************
 
@@ -138,7 +138,7 @@ Existem dois metodos de passagem de parametros ou informacoes para uma funcao.
 
 - O 1. metodo e' a passagem de parametros ou informacoes por "valor" ou "copia".
 
-Neste metodo, na função que chamou faz-se uma copia dos valores a serem
+Neste metodo, na funï¿½ï¿½o que chamou faz-se uma copia dos valores a serem
 enviados para a funcao chamada. Dessa forma os valores originais nao podem ser
 alterados, pois a funcao chamada manipula apenas as copias dos mesmos. Na funcao
 chamada sao criadas variaveis do mesmo tipo da funcao que chamou que receberao
@@ -285,12 +285,12 @@ tipo na funcao de chamada.
 O formato geral para chamar uma funcao que retorna uma valor diferente de
 inteiro e':
 
-	<nome_da_função> (parametros ou informacoes);
+	<nome_da_funï¿½ï¿½o> (parametros ou informacoes);
 
 Deve-se tambem declarar o tipo da informacao retornada na funcao que chamou
 junto com as variaveis locais desta.
 
-O formato geral é:
+O formato geral ï¿½:
 	<tipo> <nome_da_funcao>();
 
 Exemplo:
@@ -390,21 +390,21 @@ OBS.: Todos os programa devem ser finalizados pelo usuario.
     DIFERENTES 0. Se forem DIFERENTES, retorne 2 se a 1. string for maior que a 2.
     e 3 se a 2. string for maior que a 1.. Declare as strings como variavel global.  
 
-6 - Escreva um programa que receba um numero N. Escreva uma função que 
+6 - Escreva um programa que receba um numero N. Escreva uma funï¿½ï¿½o que 
     retorne a soma dos algarismos de N!.     
-    Ex: se N = 4, N! = 24. Logo, a soma de seus algarismos ´e 2 + 4 = 6.
+    Ex: se N = 4, N! = 24. Logo, a soma de seus algarismos ï¿½e 2 + 4 = 6.
 
-7 - Escreva um programa que recebe 2 valores X e Z na função main(). Escreva uma 
-    função que receba por parametro os 2 valores X e Z, calcule e retorne o 
+7 - Escreva um programa que recebe 2 valores X e Z na funï¿½ï¿½o main(). Escreva uma 
+    funï¿½ï¿½o que receba por parametro os 2 valores X e Z, calcule e retorne o 
     resultado de X exponencial Z para o programa principal. 
     ATENCAO: nao utilize nenhuma funcao pronta de exponenciacao.
 
-8 - Faça um programa receba dois números inteiros e execute as seguintes funções:
-    - Verificar se o número digitado é positivo ou negativo. Sendo que o valor de 
-      retorno será 1 se positivo, 0 se negativo ou -1 se for igual a 0.
-    - Se os 2 números são positivos, retorne a soma dos N números existentes entre 
+8 - Faï¿½a um programa receba dois nï¿½meros inteiros e execute as seguintes funï¿½ï¿½es:
+    - Verificar se o nï¿½mero digitado ï¿½ positivo ou negativo. Sendo que o valor de 
+      retorno serï¿½ 1 se positivo, 0 se negativo ou -1 se for igual a 0.
+    - Se os 2 nï¿½meros sï¿½o positivos, retorne a soma dos N nï¿½meros existentes entre 
       eles.
-    - Se os 2 números são negativos, retorne a multiplicação dos N números existente
+    - Se os 2 nï¿½meros sï¿½o negativos, retorne a multiplicaï¿½ï¿½o dos N nï¿½meros existente
       entre eles.
 
 */
