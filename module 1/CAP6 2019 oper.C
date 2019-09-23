@@ -1,4 +1,4 @@
-#define ex1
+#define ex10
 #include "stdio.h"
 /******************************************************************************
 
@@ -16,7 +16,7 @@ e' chamado de operando.
 
 A atribuicao simples de variaveis, se faz com o operador sinal de "=". A
 linguagem C trata o sinal de igual "=" como sendo um operador e nao como sinal
-de igual "=" da matematica. Ele atribui um valor ou resultado de uma expressão,
+de igual "=" da matematica. Ele atribui um valor ou resultado de uma expressï¿½o,
 que esta' a sua direita, para a variavel especificada a sua esquerda.
 
 Sua forma geral e':
@@ -514,7 +514,7 @@ Menor prioridade
 			EXERCICIOS
 
 *****************************************************************************
-OBS.: Faça um loop infinito e defina uma saida em todos os exercícios.
+OBS.: Faï¿½a um loop infinito e defina uma saida em todos os exercï¿½cios.
 
 1 - Escreva um programa que receba via teclado 2 numeros inteiros e
     imprima-os no video com o resultado das 4 operacoes aritmeticas.
@@ -546,8 +546,8 @@ OBS.: Faça um loop infinito e defina uma saida em todos os exercícios.
        3 - transforma graus Kelvin e Celsius e Fahrenheit
 
 8 - Escreva um programa para determinar a idade de uma pessoa, em anos, meses e
-    dias, recebendo via teclado a data (dia, mês e ano) do seu nascimento e a 
-    data (dia, mês e ano) atual.Verifique se a data atual e' anterior a data de
+    dias, recebendo via teclado a data (dia, mï¿½s e ano) do seu nascimento e a 
+    data (dia, mï¿½s e ano) atual.Verifique se a data atual e' anterior a data de
     nascimento.
 
 9 - Escreva um programa para determinar o dia da semana de uma determinada 
