@@ -486,7 +486,8 @@ printf("imprime os caracteres especiais \\ e \'\r");
 5 - Escreva um programa que determine o menor multiplo de um numero inteiro. Este 
     multiplo deve ser maior que o limite minimo recebido. Recebe os 2 numeros via 
     teclado.
-    Ex: menor multiplo de 13 maior que 100. Resultado: 104.
+    Ex: menor multiplo
+        system("clear"); de 13 maior que 100. Resultado: 104.
    
 
 6 - Escreva um programa que receba via teclado um tempo em segundos e converta um
