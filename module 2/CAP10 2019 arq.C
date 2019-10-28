@@ -1,4 +1,4 @@
-#define ex1
+#define ex6
 #include "stdio.h"
 #include "stdlib.h"
 /******************************************************************************
@@ -27,7 +27,7 @@ comeco dele. A medida que cada caracter e' lido ou escrito no arquivo, o
 ponteiro de arquivo e' incrementado, assegurando assim a progressao deste
 atraves do arquivo.
 
-O acesso a um arquivo e' interrompido por meio de uma operação de fechamento.
+O acesso a um arquivo e' interrompido por meio de uma operaï¿½ï¿½o de fechamento.
 Nos arquivos abertos como saida, o fechamento faz com que o conteudo, se houver,
 na memoria intermediaria(buffer) seja descarregado para o dispositivo externo.
 Esse processo e' geralmente referenciado como uma limpeza/descarga de dados
@@ -43,7 +43,7 @@ Resumindo, os procedimentos para se acessar um arquivo sao:
 2 - Ponteiro de arquivo
 
 A linha comum que une o sistema de E/S de disco aos programas escritos em C e' o
-ponteiro de arquivo. Este é um ponteiro para uma area na memoria(buffer) onde
+ponteiro de arquivo. Este ï¿½ um ponteiro para uma area na memoria(buffer) onde
 estao contidos varios dados sobre o arquivo, tais como o nome do arquivo, estado
 e posicao corrente, etc. A memoria(buffer) apontado pelo ponteiro de arquivo e'
 a area intermediaria entre o arquivo no disco e o programa.
@@ -55,7 +55,7 @@ trabalhar com mais de um arquivo simultaneamente) variavel ponteiro de arquivo.
 
 Para declarar uma variavel ponteiro de arquivo, usa-se o seguinte formato:
 
-    FILE *p1;  -> "p1" é uma variavel ponteiro de arquivo do tipo "FILE"
+    FILE *p1;  -> "p1" ï¿½ uma variavel ponteiro de arquivo do tipo "FILE"
 
 3 - fopen()
 
@@ -484,32 +484,32 @@ fclose(p);
 *****************************************************************************
 OBS.: Todos os programa devem ser finalizados pelo usuario.
 
-1 - Faça um programa para:
-    1 - criar/abrir um arquivo texto de nome ”arq.txt”,
+1 - Faï¿½a um programa para:
+    1 - criar/abrir um arquivo texto de nome ï¿½arq.txtï¿½,
     2 - receba via teclado diversos caracteres (um por vezes)e armazene nesse 
         arquivo. O caracter '0' finaliza a entrada de dados. 
     3 - abra o arquivo. Leia e imprima na tela todos os caracteres armazenados.
 
-2 - Faça um programa para gerenciar uma agenda de contatos. Para cada contato 
-    armazene o nome, o telefone e o aniversário (dia e mês). O programa deve ter 
-    as opções:
+2 - Faï¿½a um programa para gerenciar uma agenda de contatos. Para cada contato 
+    armazene o nome, o telefone e o aniversï¿½rio (dia e mï¿½s). O programa deve ter 
+    as opï¿½ï¿½es:
     1 - inserir contato,
     2 - remover contato, 
     3 - pesquisar um contato pelo nome, 
     4 - listar todos os contatos, 
     5 - listar os contatos cujo nome inicia com uma dada letra, 
-    6 - imprimir os aniversariantes do mês. 
+    6 - imprimir os aniversariantes do mï¿½s. 
     Sempre que o programa for encerrado, os contatos devem ser escritos no arquivo.
     Quando o programa iniciar os contatos devem ser lidos do arquivo.
 
-3 - Implemente um controle simples de mercadorias em uma despensa doméstica.
-    Cada produto será armazenado um código numérico, descrição e quantidade atual.
-    O programa deve ter as opções:
+3 - Implemente um controle simples de mercadorias em uma despensa domï¿½stica.
+    Cada produto serï¿½ armazenado um cï¿½digo numï¿½rico, descriï¿½ï¿½o e quantidade atual.
+    O programa deve ter as opï¿½ï¿½es:
     1 - entrada de produtos
     2 - retirada de produtos
-    3 - pesquisar uma mercadoria pela descrição
+    3 - pesquisar uma mercadoria pela descriï¿½ï¿½o
     4 - listar todos os produtos 
-    5 - listar os produtos não disponíveis.
+    5 - listar os produtos nï¿½o disponï¿½veis.
     Escreva os itens das mercadorias direto no arquivo. (utilize a funcao fseek).
 
 4 - A partir do exercico 6 do capitulo de funcoes, retire o vetor de estrutura e 
