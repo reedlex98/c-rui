@@ -1,4 +1,4 @@
-#define ex6
+#define ex7
 #include "stdio.h"
 #include "stdlib.h"
 /******************************************************************************
@@ -121,31 +121,31 @@ Exemplo:*/
 /*o programa cria e escreve caracteres no arquivo "teste1"*/
 main()
 {
-//FILE *fopen(); /*a funcao fopen() retorna um ponteiro do tipo "FILE". Por isso,
-//                 tem que fazer esta declaracao */
-FILE *p;   /*declara o ponteiro "p" do tipo "FILE"*/
-char ch;
-char i;
+	//FILE *fopen(); /*a funcao fopen() retorna um ponteiro do tipo "FILE". Por isso,
+	//                 tem que fazer esta declaracao */
+	FILE *p; /*declara o ponteiro "p" do tipo "FILE"*/
+	char ch;
+	char i;
 
-printf("exemplo1 \n\n");
-printf("abre o arquivo no modo escrita w \n");
-if((p = fopen("teste1","w"))==NULL)
+	printf("exemplo1 \n\n");
+	printf("abre o arquivo no modo escrita w \n");
+	if ((p = fopen("teste1", "w")) == NULL)
 	{
-	printf("erro na abertura do arquivo \n");
-	exit(0);  /*encerra o programa e volta ao sistema operacional*/
+		printf("erro na abertura do arquivo \n");
+		exit(0); /*encerra o programa e volta ao sistema operacional*/
 	}
 
-printf("escreve 4 caracteres no arquivo teste1\n");
-putc('a',p);
-putc(66,p);
+	printf("escreve 4 caracteres no arquivo teste1\n");
+	putc('a', p);
+	putc(66, p);
 
-ch = 'e';
-putc(ch,p);
+	ch = 'e';
+	putc(ch, p);
 
-i=70;
-putc(i,p);
+	i = 70;
+	putc(i, p);
 
-fclose(p);
+	fclose(p);
 }
 #endif
 
@@ -153,25 +153,25 @@ fclose(p);
 /* o programa le os caracteres escritos no arquivo "teste1" pelo exemplo 1*/
 main()
 {
-//FILE *fopen();
-FILE *p;
-char ch;
+	//FILE *fopen();
+	FILE *p;
+	char ch;
 
-printf("exemplo2 \n\n\n");
-printf("abre o arquivo no modo leitura r \n");
-if((p = fopen("teste1","r"))==NULL)
+	printf("exemplo2 \n\n\n");
+	printf("abre o arquivo no modo leitura r \n");
+	if ((p = fopen("teste1", "r")) == NULL)
 	{
-	printf("erro na abertura do arquivo \n");
-	exit(0);
+		printf("erro na abertura do arquivo \n");
+		exit(0);
 	}
-printf("le os char escrito no arquivo pelo exemplo 1 e imprime na tela\n\n");
-ch = getc(p);
-putchar(ch);
-putchar(getc(p));
-putchar(getc(p));
-putchar(getc(p));
+	printf("le os char escrito no arquivo pelo exemplo 1 e imprime na tela\n\n");
+	ch = getc(p);
+	putchar(ch);
+	putchar(getc(p));
+	putchar(getc(p));
+	putchar(getc(p));
 
-fclose(p);
+	fclose(p);
 }
 #endif
 
@@ -196,29 +196,29 @@ Exemplo:*/
 /*o programa cria e escreve dados formatados no arquivo teste2*/
 main()
 {
-//FILE *fopen();
-FILE *p;
-int i = 100;
-float f = 20.34;
-unsigned u = 65000;
-long l = 2000000000;
-char c = 'x';
-static char s[] = "dadosformatados";
+	//FILE *fopen();
+	FILE *p;
+	int i = 100;
+	float f = 20.34;
+	unsigned u = 65000;
+	long l = 2000000000;
+	char c = 'x';
+	static char s[] = "dadosformatados";
 
-if((p = fopen("teste2","w"))==NULL)
+	if ((p = fopen("teste2", "w")) == NULL)
 	{
-	printf("erro na abertura do arquivo \n");
-	exit(0);
+		printf("erro na abertura do arquivo \n");
+		exit(0);
 	}
-printf("escreve dados formatados no arquivo teste2\n");
-fprintf(p,"%d ",i);
-fprintf(p,"%f ",f);
-fprintf(p,"%u ",u);
-fprintf(p,"%ld ",l);
-fprintf(p,"%c ",c);
-fprintf(p,"%s ",s);
+	printf("escreve dados formatados no arquivo teste2\n");
+	fprintf(p, "%d ", i);
+	fprintf(p, "%f ", f);
+	fprintf(p, "%u ", u);
+	fprintf(p, "%ld ", l);
+	fprintf(p, "%c ", c);
+	fprintf(p, "%s ", s);
 
-fclose(p);
+	fclose(p);
 }
 #endif
 
@@ -226,37 +226,37 @@ fclose(p);
 /* programa que le dados formatados do arquivo teste2 e imprime na tela*/
 main()
 {
-//FILE *fopen();
-FILE *p;
-int i;
-float f;
-unsigned u;
-long l;
-char c;
-static char s[20];
+	//FILE *fopen();
+	FILE *p;
+	int i;
+	float f;
+	unsigned u;
+	long l;
+	char c;
+	static char s[20];
 
-if((p = fopen("teste2","r"))==NULL)
+	if ((p = fopen("teste2", "r")) == NULL)
 	{
-	printf("erro na abertura do arquivo \n");
-	exit(0);
+		printf("erro na abertura do arquivo \n");
+		exit(0);
 	}
-printf("le os dados escritos pelo exemplo anterior\n");
-fscanf(p,"%d ",&i);
-fscanf(p,"%f ",&f);
-fscanf(p,"%u ",&u);
-fscanf(p,"%ld ",&l);
-fscanf(p,"%c ",&c);
-fscanf(p,"%s ",s);
+	printf("le os dados escritos pelo exemplo anterior\n");
+	fscanf(p, "%d ", &i);
+	fscanf(p, "%f ", &f);
+	fscanf(p, "%u ", &u);
+	fscanf(p, "%ld ", &l);
+	fscanf(p, "%c ", &c);
+	fscanf(p, "%s ", s);
 
-printf("imprime na tela os dados formatados lidos do arquivo teste2\n\n");
-printf("inteiro : %d\n",i);
-printf("float   : %f\n",f);
-printf("unsigned: %u\n",u);
-printf("long    : %ld\n",l);
-printf("char    : %c\n",c);
-printf("string  : %s\n",s);
+	printf("imprime na tela os dados formatados lidos do arquivo teste2\n\n");
+	printf("inteiro : %d\n", i);
+	printf("float   : %f\n", f);
+	printf("unsigned: %u\n", u);
+	printf("long    : %ld\n", l);
+	printf("char    : %c\n", c);
+	printf("string  : %s\n", s);
 
-fclose(p);
+	fclose(p);
 }
 #endif
 /*
@@ -282,38 +282,38 @@ Exemplos:*/
 #ifdef ex5
 main()
 {
-//FILE *fopen();
-FILE *p;
-static char s[] = "teste com variavel";
-char a[40];
-char b[100];
+	//FILE *fopen();
+	FILE *p;
+	static char s[] = "teste com variavel";
+	char a[40];
+	char b[100];
 
-if((p = fopen("teste3","w"))==NULL)
+	if ((p = fopen("teste3", "w")) == NULL)
 	{
-	printf("erro na abertura do arquivo \n");
-	exit(0);
+		printf("erro na abertura do arquivo \n");
+		exit(0);
 	}
-printf("escreve as strings no arquivo teste3\n");
-fputs("isto e' um pequeno teste com uma string",p);
-fputs(s,p);
+	printf("escreve as strings no arquivo teste3\n");
+	fputs("isto e' um pequeno teste com uma string", p);
+	fputs(s, p);
 
-fclose(p);
-getchar();
+	fclose(p);
+	getchar();
 
-if((p = fopen("teste3","r"))==NULL)
+	if ((p = fopen("teste3", "r")) == NULL)
 	{
-	printf("erro na abertura do arquivo \n");
-	exit(0);
+		printf("erro na abertura do arquivo \n");
+		exit(0);
 	}
-printf("le as strings do arquivo teste3\n\n");
-fgets(a,40,p);
-fgets(b,100,p);
+	printf("le as strings do arquivo teste3\n\n");
+	fgets(a, 40, p);
+	fgets(b, 100, p);
 
-printf("escreve as strings lidas na tela\n\n");
-puts(a);
-puts(b);
+	printf("escreve as strings lidas na tela\n\n");
+	puts(a);
+	puts(b);
 
-fclose(p);
+	fclose(p);
 }
 #endif
 
@@ -334,51 +334,51 @@ O formato geral e':
 Exemplo:*/
 
 #ifdef ex6
-char ch[5] = {'a','b','c','d','\0'};
+char ch[5] = {'a', 'b', 'c', 'd', '\0'};
 typedef struct dados
-	{
+{
 	int i;
 	float f;
 	double d;
-	}dados;
-dados numeros = {1000,5000,10000};
+} dados;
+dados numeros = {1000, 5000, 10000};
 
 main()
 {
-char st[5];
-dados num;
+	char st[5];
+	dados num;
 
-//FILE *fopen();
-FILE *p;
+	//FILE *fopen();
+	FILE *p;
 
-if((p = fopen("teste4","w"))==NULL)
+	if ((p = fopen("teste4", "w")) == NULL)
 	{
-	printf("erro na abertura do arquivo \n");
-	exit(0);
+		printf("erro na abertura do arquivo \n");
+		exit(0);
 	}
-printf("escreve as variaveis no arquivo teste4\n");
-fwrite(ch,5,1,p);
-fwrite(&numeros,sizeof(numeros),1,p);
+	printf("escreve as variaveis no arquivo teste4\n");
+	fwrite(ch, 5, 1, p);
+	fwrite(&numeros, sizeof(numeros), 1, p);
 
-fclose(p);
-getchar();
+	fclose(p);
+	getchar();
 
-if((p = fopen("teste4","r"))==NULL)
+	if ((p = fopen("teste4", "r")) == NULL)
 	{
-	printf("erro na abertura do arquivo \n");
-	exit(0);
+		printf("erro na abertura do arquivo \n");
+		exit(0);
 	}
-printf("le as variaveis do arquivo teste4\n\n");
-fread(st,5,1,p);
-fread(&num,sizeof(num),1,p);
+	printf("le as variaveis do arquivo teste4\n\n");
+	fread(st, 5, 1, p);
+	fread(&num, sizeof(num), 1, p);
 
-printf("escreve as variaveis lidas na tela\n\n");
-printf("vetor: %s\n\n",st);
-printf("estrutura: %d\n",num.i);
-printf("estrutura: %f\n",num.f);
-printf("estrutura: %g\n",num.d);
+	printf("escreve as variaveis lidas na tela\n\n");
+	printf("vetor: %s\n\n", st);
+	printf("estrutura: %d\n", num.i);
+	printf("estrutura: %f\n", num.f);
+	printf("estrutura: %g\n", num.d);
 
-fclose(p);
+	fclose(p);
 }
 #endif
 
@@ -401,7 +401,7 @@ O formato e':
 Exemplo: */
 #ifdef ex7
 struct dados
-	{
+{
 	int i;
 	float f;
 	double d;
@@ -409,71 +409,71 @@ struct dados
 	char a;
 	char b;
 	char c;
-	};
-struct dados varios = {1000,20000,300000,'a','i','r'};
+};
+struct dados varios = {1000, 20000, 300000, 'a', 'i', 'r'};
 
 main()
 {
-//FILE *fopen();
-FILE *p;
-long y;		/* deslocamento */
-long k = 0;	/* n. do registro */
-int x;
+	//FILE *fopen();
+	FILE *p;
+	long y;		/* deslocamento */
+	long k = 0; /* n. do registro */
+	int x;
 
-if((p = fopen("teste5","w"))==NULL)
+	if ((p = fopen("teste5", "w")) == NULL)
 	{
-	printf("erro na abertura do arquivo \n");
-	exit(0);
+		printf("erro na abertura do arquivo \n");
+		exit(0);
 	}
-printf("escreve 5 registros no arquivo teste5\n");
-getchar();
-for(x=0;x < 5;x++)
-	{
-	printf("escreve o registro %d: \n",x+1);
-	printf("int    i: %d\n",varios.i);
-	printf("float  f: %f\n",varios.f);
-	printf("double d: %g\n",varios.d);
-	printf("char a: %c\n",varios.a);
-	printf("char b: %c\n",varios.b);
-	printf("char c: %c\n",varios.c);
+	printf("escreve 5 registros no arquivo teste5\n");
 	getchar();
-
-	fwrite(&varios,sizeof(varios),1,p);
-	varios.i = varios.i + 10;
-	varios.f = varios.f + 100;
-	varios.d = varios.d + 1000;
-	varios.a = varios.a + 1;
-	varios.b = varios.b + 1;
-	varios.c = varios.c + 1;
-	}
-fclose(p);
-
-if((p = fopen("teste5","r"))==NULL)
+	for (x = 0; x < 5; x++)
 	{
-	printf("erro na abertura do arquivo \n");
-	exit(0);
+		printf("escreve o registro %d: \n", x + 1);
+		printf("int    i: %d\n", varios.i);
+		printf("float  f: %f\n", varios.f);
+		printf("double d: %g\n", varios.d);
+		printf("char a: %c\n", varios.a);
+		printf("char b: %c\n", varios.b);
+		printf("char c: %c\n", varios.c);
+		getchar();
+
+		fwrite(&varios, sizeof(varios), 1, p);
+		varios.i = varios.i + 10;
+		varios.f = varios.f + 100;
+		varios.d = varios.d + 1000;
+		varios.a = varios.a + 1;
+		varios.b = varios.b + 1;
+		varios.c = varios.c + 1;
+	}
+	fclose(p);
+
+	if ((p = fopen("teste5", "r")) == NULL)
+	{
+		printf("erro na abertura do arquivo \n");
+		exit(0);
 	}
 
-printf("calcula o n. de bytes a partir do inicio do arquivo ate' o inicio\n");
-printf(" do 3. registro. o 3. registro tem indice 2\n\n");
-k = 2;
-y = k * sizeof(varios);
+	printf("calcula o n. de bytes a partir do inicio do arquivo ate' o inicio\n");
+	printf(" do 3. registro. o 3. registro tem indice 2\n\n");
+	k = 2;
+	y = k * sizeof(varios);
 
-printf("posiciona o ponteiro p no inicio 3. registro do arquivo teste5\n\n");
-fseek(p,y,0);
+	printf("posiciona o ponteiro p no inicio 3. registro do arquivo teste5\n\n");
+	fseek(p, y, 0);
 
-printf("le o 3. registro do arquivo teste5\n\n");
-fread(&varios,sizeof(varios),1,p);
+	printf("le o 3. registro do arquivo teste5\n\n");
+	fread(&varios, sizeof(varios), 1, p);
 
-printf("escreve o 3. registro na tela\n\n");
-printf("int    i: %d\n",varios.i);
-printf("float  f: %f\n",varios.f);
-printf("double d: %g\n",varios.d);
-printf("char a: %c\n",varios.a);
-printf("char b: %c\n",varios.b);
-printf("char c: %c\n",varios.c);
+	printf("escreve o 3. registro na tela\n\n");
+	printf("int    i: %d\n", varios.i);
+	printf("float  f: %f\n", varios.f);
+	printf("double d: %g\n", varios.d);
+	printf("char a: %c\n", varios.a);
+	printf("char b: %c\n", varios.b);
+	printf("char c: %c\n", varios.c);
 
-fclose(p);
+	fclose(p);
 }
 #endif
 
@@ -515,4 +515,3 @@ OBS.: Todos os programa devem ser finalizados pelo usuario.
 4 - A partir do exercico 6 do capitulo de funcoes, retire o vetor de estrutura e 
     escreva e leia os registros direto no arquivo. (utilize a funcao fseek).
 */
-
