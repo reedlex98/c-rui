@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define NORMAL
-
-#ifdef NORMAL
-
+#include <string.h>
 struct dataStruct
 {
     int dia;
@@ -147,8 +144,7 @@ void lista(struct dados *ps, int tam)
     system("clear");
 
     FILE *p, *p1;
-    int i;
-    int cont, comp;
+    int i, qtdMostrada = 0, cont, comp;
 
     if ((p1 = fopen("contador.txt", "r")) == NULL)
     {
@@ -158,7 +154,6 @@ void lista(struct dados *ps, int tam)
     else
     {
         fscanf(p1, "%d", &cont);
-        printf("Quantidade de registros: %d\n", cont);
         fclose(p1);
         /*r" --> Abre o arquivo apenas para leitura.*/
         if ((p = fopen("arquivo.txt", "r")) == NULL)
@@ -171,28 +166,23 @@ void lista(struct dados *ps, int tam)
             for (i = 0; i < cont; i++)
             {
                 comp = i * tam; //calcula o n. de bytes para posicionar o ponteiro do arquivo
-                printf("\n");
+                
                 fseek(p, comp, 0);    //posiciona o ponteiro no inicio do registro dentro do arquivo
                 fread(ps, tam, 1, p); //le o registro
                 if (ps->nome[0] != '*')
-                { //verifica se esta apagado
-                    printf("Nome: %s\n", ps->nome);
-                }
-                if (ps->dataNascimento.dia != '*' && ps->dataNascimento.mes != '*' && ps->dataNascimento.ano != '*')
-                { //verifica se esta apagado
+                {
+                    printf("\nNome: %s\n", ps->nome);
                     printf("Data de Nascimento: %d / %d / %d\n", ps->dataNascimento.dia, ps->dataNascimento.mes, ps->dataNascimento.ano);
-                }
-                if (ps->estadoCivil[0] != '*')
-                { //verifica se esta apagado
                     printf("Estado civil: %s\n", ps->estadoCivil);
+                    printf("Salario: R$%.2lf\n", ps->salario);
+                    qtdMostrada++;
                 }
-                if (ps->salario != '*')
-                { //verifica se esta apagado
-                    printf("Salario: %lf\n", ps->salario);
-                }
+
             }
             fclose(p);
-
+            if(qtdMostrada == 0){
+                printf("Ainda nao ha registros no arquivo.txt");
+            }
             printf("\n\nPressione alguma tecla para continuar...");
             getchar();
             system("clear");
@@ -217,7 +207,6 @@ int pesquisa(struct dados *ps, int tam)
     {
         fscanf(p1, "%d", &cont);
         fclose(p1);
-        printf("Quantidade de registros: %d\n", cont);
 
         if ((p = fopen("arquivo.txt", "r")) == NULL)
         {
@@ -276,7 +265,6 @@ void pesquisaMultiplos(struct dados *ps, int tam)
     {
         fscanf(p1, "%d", &cont);
         fclose(p1);
-        printf("Quantidade de registros: %d\n", cont);
 
         if ((p = fopen("arquivo.txt", "r")) == NULL)
         {
@@ -320,7 +308,7 @@ void pesquisaMultiplos(struct dados *ps, int tam)
                             printf("Nome: %s\n", ps->nome);
                             printf("Estado civil: %s\n", ps->estadoCivil);
                             printf("Data de Nascimento: %d / %d /%d \n", ps->dataNascimento.dia, ps->dataNascimento.mes, ps->dataNascimento.ano);
-                            printf("Salario: %lf \n", ps->salario);
+                            printf("Salario: R$%.2lf \n", ps->salario);
                             resultCont++;
                         }
                     }
@@ -350,7 +338,7 @@ void pesquisaMultiplos(struct dados *ps, int tam)
                             printf("Nome: %s\n", ps->nome);
                             printf("Estado civil: %s\n", ps->estadoCivil);
                             printf("Data de Nascimento: %d / %d /%d \n", ps->dataNascimento.dia, ps->dataNascimento.mes, ps->dataNascimento.ano);
-                            printf("Salario: %lf \n", ps->salario);
+                            printf("Salario: R$%.2lf \n", ps->salario);
                             resultCont++;
                         }
                     }
@@ -387,7 +375,7 @@ void pesquisaMultiplos(struct dados *ps, int tam)
                         printf("Nome: %s\n", ps->nome);
                         printf("Estado civil: %s\n", ps->estadoCivil);
                         printf("Data de Nascimento: %d / %d /%d \n", ps->dataNascimento.dia, ps->dataNascimento.mes, ps->dataNascimento.ano);
-                        printf("Salario: %lf \n", ps->salario);
+                        printf("Salario: R$%.2lf \n", ps->salario);
                         resultCont++;
                     }
                 }
@@ -420,7 +408,7 @@ void pesquisaMultiplos(struct dados *ps, int tam)
                         printf("Nome: %s\n", ps->nome);
                         printf("Estado civil: %s\n", ps->estadoCivil);
                         printf("Data de Nascimento: %d / %d /%d \n", ps->dataNascimento.dia, ps->dataNascimento.mes, ps->dataNascimento.ano);
-                        printf("Salario: %lf \n", ps->salario);
+                        printf("Salario: R$%.2lf \n", ps->salario);
                         resultCont++;
                     }
                 }
@@ -482,12 +470,12 @@ void altera(struct dados *ps, int tam)
     }
     else
     {
-        printf("Alterando registro: %d\n", n_reg);
         n_bytes = tam * n_reg;
 
         fseek(p, n_bytes, 0); //posioiona o ponteiro do arquivo no registro a ser alterado
         fread(ps, tam, 1, p); //le registro do arquivo
 
+        printf("Alterando registro: %d\n", n_reg);
         printf("\n1 - Alterar somente salario");
         printf("\n2 - Alterar todos os dados");
         printf("\nEscolha uma das opcoes: ");
@@ -538,109 +526,62 @@ void altera(struct dados *ps, int tam)
 void exclui(struct dados *ps, int tam)
 {
     FILE *p;
-    p = fopen("arquivo.txt", "r+");
     int n_reg;
     int n_bytes;
+    char resp;
 
-    n_reg = pesquisa(ps, tam); //pesquisa o registro no arquivo
-    n_bytes = tam * n_reg;
+    system("clear");
 
-    fseek(p, n_bytes, 0); //posioiona o ponteiro do arquivo no registro a ser apagado
-    fread(ps, tam, 1, p); //le o registro do arquivo
-    printf("nome para apagar e' %s\n", ps->nome);
-    //apaga o registro do arquivo
-
-    printf("nome para apagar e' %s\n", ps->nome);
-
-    fseek(p, n_bytes, 0);  //posiciona o ponteiro do arquivo no inicio do regisro a ser apagado
-    fwrite(ps, tam, 1, p); //escreve o registro
-
-    fclose(p);
-}
-
-#endif
-
-#ifdef DEBUG
-
-struct dataStruct
-{
-    int dia;
-    int mes;
-    int ano;
-};
-
-struct dados
-{
-    char nome[20];
-    struct dataStruct dataNascimento;
-    char estadoCivil[30];
-    double salario;
-};
-
-void inclui();
-
-int main(int argc, char const *argv[])
-{
-    struct dados info;
-    struct dados *p;
-    int op;
-    int i;
-    int tam; //n. de bytes da estrutura
-
-    p = &info;
-    tam = sizeof(info);
-
-    inclui(p, tam);
-
-    return 0;
-}
-
-void inclui(struct dados *ps, int tam)
-{
-    FILE *p, *p1;
-    int cont = 0;
-    int i;
-
-    p1 = fopen("contador.txt", "r");
-    fscanf(p1, "%d", &cont);
-    printf("contador antes %d\n", cont);
-    fclose(p1);
-
-    //zera os dados da estrutura
-
-    p = fopen("arquivo.txt", "a");
-
-    if (p == NULL)
+    do
     {
-        printf("\nERRO");
-        exit(1);
+        n_reg = pesquisa(ps, tam);
+        if (n_reg == -1)
+        {
+            printf("Não encontramos resultados para sua pesquisa...\n");
+            printf("Deseja tentar novamente? (s) - sim\n");
+            scanf("%c", &resp);
+            getchar();
+        }
+        else
+        {
+            break;
+        }
+        if (resp != 's')
+        {
+            system("clear");
+            return;
+        }
+
+    } while (resp == 's');
+
+    if ((p = fopen("arquivo.txt", "r+")) == NULL)
+    {
+        printf("Erro ao abrir o arquivo.txt");
+        exit(0);
     }
     else
     {
-        printf("Digite o nome: ");
-        scanf("%s", ps->nome);
+        n_bytes = tam * n_reg;
+
+        fseek(p, n_bytes, 0); //posioiona o ponteiro do arquivo no registro a ser apagado
+        fread(ps, tam, 1, p); //le o registro do arquivo
+
+        strcpy(ps->nome, "*");
+        strcpy(ps->estadoCivil, "*");
+        ps->dataNascimento.dia = 0;
+        ps->dataNascimento.mes = 0;
+        ps->dataNascimento.ano = 0;
+        ps->salario = 0;
+
+        fseek(p, n_bytes, 0);  //posiciona o ponteiro do arquivo no inicio do regisro a ser apagado
+        fwrite(ps, tam, 1, p); //escreve o registro
+
+        system("clear");
+        printf("Registro deletado com sucesso!\n");
+        printf("Pressione alguma tecla para continuar...");
         getchar();
-        printf("Digite a data de nascimento (dia, mes e ano): ");
-        scanf("%d%d%d", &ps->dataNascimento.dia, &ps->dataNascimento.mes, &ps->dataNascimento.ano);
-        getchar();
-        printf("Digite o estado civil (solteiro, casado, etc...): ");
-        scanf("%s", ps->estadoCivil);
-        getchar();
-        printf("Digite o nome: ");
-        scanf("%lf", &ps->salario);
-        getchar();
+
+        fclose(p);
     }
-
-    //aqui os dados sao recebidos via teclado
-
-    fwrite(ps, tam, 1, p);
-    fclose(p);
-
-    cont++;
-
-    p1 = fopen("contador.txt", "w");
-    fprintf(p1, "%d", cont);
-    printf("contador depois %d\n", cont);
-    fclose(p1);
+    system("clear");
 }
-#endif
