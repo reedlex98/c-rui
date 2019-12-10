@@ -114,10 +114,10 @@ void inclui(struct dados *ps, int tam)
             printf("Digite o nome: ");
             scanf("%s", ps->nome);
             getchar();
-            printf("Digite a data de nascimento (dia, mes e ano): \n");
+            printf("Digite a data de nascimento (Dia, Mes e Ano): \n");
             scanf("%d%d%d", &ps->dataNascimento.dia, &ps->dataNascimento.mes, &ps->dataNascimento.ano);
             getchar();
-            printf("Digite o estado civil (solteiro, casado, etc...): ");
+            printf("Digite o estado civil (Solteiro, Casado, Separado, Divorciado, Viuvo): ");
             scanf("%s", ps->estadoCivil);
             getchar();
             printf("Digite o salario: ");
@@ -133,7 +133,8 @@ void inclui(struct dados *ps, int tam)
             fprintf(p1, "%d", cont);
             fclose(p1);
 
-            printf("\n\nPressione alguma tecla para continuar...");
+            printf("\n\nRegistro efetuado com sucesso!");
+            printf("\nPressione alguma tecla para continuar...");
             getchar();
             system("clear");
         }
@@ -210,7 +211,7 @@ int pesquisa(struct dados *ps, int tam)
     if ((p1 = fopen("contador.txt", "r")) == NULL)
     {
         printf("Erro ao abrir o contador.txt");
-        return -1;
+        exit(0);
     }
     else
     {
@@ -221,7 +222,7 @@ int pesquisa(struct dados *ps, int tam)
         if ((p = fopen("arquivo.txt", "r")) == NULL)
         {
             printf("Erro ao abrir o arquivo.txt");
-            return -1;
+            exit(0);
         }
         else
         {
@@ -241,7 +242,7 @@ int pesquisa(struct dados *ps, int tam)
                     if (pesqNome[x] != ps->nome[x])
                         break;
 
-                    if (pesqNome[x+1] == '\0' && ps->nome[x+1] == '\0')
+                    if (pesqNome[x + 1] == '\0' && ps->nome[x + 1] == '\0')
                     {
                         return y;
                     }
@@ -249,10 +250,6 @@ int pesquisa(struct dados *ps, int tam)
             }
 
             fclose(p);
-
-            printf("\n\nPressione alguma tecla para continuar...");
-            getchar();
-            system("clear");
 
             return -1;
         }
@@ -273,7 +270,7 @@ void pesquisaMultiplos(struct dados *ps, int tam)
     if ((p1 = fopen("contador.txt", "r")) == NULL)
     {
         printf("Erro ao abrir o contador.txt");
-        return;
+        exit(0);
     }
     else
     {
@@ -283,8 +280,8 @@ void pesquisaMultiplos(struct dados *ps, int tam)
 
         if ((p = fopen("arquivo.txt", "r")) == NULL)
         {
-            printf("Erro ao abrir o arvuivo.txt");
-            return;
+            printf("Erro ao abrir o arquivo.txt");
+            exit(0);
         }
         else
         {
@@ -317,7 +314,7 @@ void pesquisaMultiplos(struct dados *ps, int tam)
                             break;
                         }
 
-                        if (pesqNomeOuES[x+1] == '\0' && ps->nome[x+1] == '\0')
+                        if (pesqNomeOuES[x + 1] == '\0' && ps->nome[x + 1] == '\0')
                         {
                             printf("\nRegistro: %d\n", y);
                             printf("Nome: %s\n", ps->nome);
@@ -347,7 +344,7 @@ void pesquisaMultiplos(struct dados *ps, int tam)
                             break;
                         }
 
-                        if (pesqNomeOuES[x+1] == '\0' && ps->estadoCivil[x+1] == '\0')
+                        if (pesqNomeOuES[x + 1] == '\0' && ps->estadoCivil[x + 1] == '\0')
                         {
                             printf("\nRegistro: %d\n", y);
                             printf("Nome: %s\n", ps->nome);
@@ -450,26 +447,92 @@ void pesquisaMultiplos(struct dados *ps, int tam)
 void altera(struct dados *ps, int tam)
 {
     FILE *p;
-    int n_reg;
-    ;
+    int n_reg, opc;
+    char resp;
     int n_bytes;
 
-    n_reg = pesquisa(ps, tam); //pesquisa o registro no arquivo
-    printf("altera reg n.: %d\n", n_reg);
-    n_bytes = tam * n_reg;
+    system("clear");
 
-    p = fopen("arquivo.txt", "r+");
+    do
+    {
+        n_reg = pesquisa(ps, tam);
+        if (n_reg == -1)
+        {
+            printf("Não encontramos resultados para sua pesquisa...\n");
+            printf("Deseja tentar novamente? (s) - sim\n");
+            scanf("%c", &resp);
+            getchar();
+        }
+        else
+        {
+            break;
+        }
+        if (resp != 's')
+        {
+            system("clear");
+            return;
+        }
 
-    fseek(p, n_bytes, 0); //posioiona o ponteiro do arquivo no registro a ser alterado
-    fread(ps, tam, 1, p); //le registro do arquivo
+    } while (resp == 's');
 
-    printf("recebe os dados para alteracao: ");
-    //recebe via teclado todos os dados do registro
+    if ((p = fopen("arquivo.txt", "r+")) == NULL)
+    {
+        printf("Erro ao abrir o arquivo.txt");
+        exit(0);
+    }
+    else
+    {
+        printf("Alterando registro: %d\n", n_reg);
+        n_bytes = tam * n_reg;
 
-    fseek(p, n_bytes, 0);  //posiciona o ponteiro do arquivo no inicio do regisro a ser alterado
-    fwrite(ps, tam, 1, p); //escreve o registro no arquivo
+        fseek(p, n_bytes, 0); //posioiona o ponteiro do arquivo no registro a ser alterado
+        fread(ps, tam, 1, p); //le registro do arquivo
 
-    fclose(p);
+        printf("\n1 - Alterar somente salario");
+        printf("\n2 - Alterar todos os dados");
+        printf("\nEscolha uma das opcoes: ");
+        scanf("%d", &opc);
+        getchar();
+
+        system("clear");
+        switch (opc)
+        {
+        case 1:
+            printf("\nDigite um novo valor para o salario: ");
+            scanf("%lf", &ps->salario);
+            getchar();
+            break;
+        case 2:
+            printf("\nDigite um novo valor para o nome: ");
+            scanf("%s", ps->nome);
+            getchar();
+            printf("Digite um novo valor para o salario: ");
+            scanf("%lf", &ps->salario);
+            getchar();
+            printf("Digite um novo valor para o estado civil (Solteiro, Casado, Divorciado, Separado, Viuvo): ");
+            scanf("%s", ps->estadoCivil);
+            getchar();
+            printf("Digite um novo valor para a data de nascimento (Data, Mes e Ano): \n");
+            scanf("%d %d %d", &ps->dataNascimento.dia, &ps->dataNascimento.mes, &ps->dataNascimento.ano);
+            getchar();
+            break;
+        default:
+            printf("Opcao invalida...");
+            break;
+        }
+        if (opc == 1 || opc == 2)
+        {
+            system("clear");
+            fseek(p, n_bytes, 0);  //posiciona o ponteiro do arquivo no inicio do regisro a ser alterado
+            fwrite(ps, tam, 1, p); //escreve o registro no arquivo
+            printf("Dados alterados com sucesso!");
+        }
+        printf("\nPressione alguma tecla para continuar...");
+        getchar();
+
+        fclose(p);
+    }
+    system("clear");
 }
 
 void exclui(struct dados *ps, int tam)
